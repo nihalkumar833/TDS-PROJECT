@@ -53,7 +53,10 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
-
+# Add this root endpoint:
+@app.get("/")
+def read_root():
+    return {"message": "Hello, World!"}
 # Verify API key is set
 if not API_KEY:
     logger.error("API_KEY environment variable is not set. The application will not function correctly.")
